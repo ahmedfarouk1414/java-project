@@ -3,11 +3,12 @@ pipeline {
 
 
   stages {
-
     stage('Unit Tests') {
-    agent {
+    
+      agent {
        lable 'apache'
       }
+
       steps {
         sh 'ant -f test.xml -v'
         junit 'reports/result.xml'
@@ -22,15 +23,14 @@ pipeline {
       steps {
         sh 'ant -f build.xml -v'
         }
-   
-       post {
+     }
+
+     post {
     success {
        archiveArtifacts artifacts: 'dist/*.jar', fingerprint: true
-   }
+      }
+    }
   }
-}
-
-
     stage('deploy') {
           agent {
             lable 'apache'
@@ -45,6 +45,7 @@ pipeline {
      agent {
         lable 'CentOS'
       }
+     
      steps {
         sh "wget http://192.168.122.225/recmtangles/all/${env.BUILD_NUMBER}.jar"
         sh "java -jar rectangle_${env.BUILD_NUMBER}.jar 3 4"
