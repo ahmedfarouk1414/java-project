@@ -40,9 +40,9 @@ pipeline {
           }
          }
   
-    stage ("Runing on CentOS") {
+    stage ("Runing on centos") {
      agent {
-        lable 'CentOS'
+        lable 'centos'
       }
      
      steps {
