@@ -6,7 +6,7 @@ pipeline {
     stage('Unit Tests') {
     
       agent {
-       lable 'apache'
+       label 'apache'
       }
 
       steps {
@@ -17,7 +17,7 @@ pipeline {
  
      stage('build') {
          agent {
-        lable 'apache'
+        label 'apache'
         }
 
       steps {
@@ -32,7 +32,7 @@ pipeline {
   }
     stage('deploy') {
           agent {
-            lable 'apache'
+            label 'apache'
             }
 
      steps {
@@ -42,7 +42,7 @@ pipeline {
   
     stage ("Runing on centos") {
      agent {
-        lable 'centos'
+        label 'centos'
       }
      
      steps {
